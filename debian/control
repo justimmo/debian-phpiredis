@@ -1,0 +1,19 @@
+Source: phpiredis
+Section: php
+Priority: optional
+Maintainer: Alexander Hofbauer <a.hofbauer@justimmo.at>
+Build-Depends: debhelper (>= 9~),
+               dh-php (>= 0.22~),
+               php-all-dev (>= 17~)
+Standards-Version: 3.9.8
+Homepage: https://github.com/nrk/phpiredis
+
+Package: php-phpiredis
+Architecture: any
+Depends: ucf,
+         ${misc:Depends},
+         ${php:Depends},
+         ${shlibs:Depends}
+Provides: ${php:Provides}
+Description: PHP7 Hiredis extension
+ Extension using libhiredis, providing native Redis connections.

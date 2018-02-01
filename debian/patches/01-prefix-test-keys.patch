@@ -1,0 +1,159 @@
+commit 40ced34cda482b1aef3676ac19ffd599976cc2ae
+Author: Alexander Hofbauer <alex@derhofbauer.at>
+Date:   Fri Jul 31 11:57:38 2015 +0200
+
+    Prefix keys when writing to Redis
+
+diff --git a/phpiredis-1.0.0/tests/client_004.phpt b/phpiredis-1.0.0/tests/client_004.phpt
+index 406a289..69b03f2 100644
+--- a/phpiredis-1.0.0/tests/client_004.phpt
++++ b/phpiredis-1.0.0/tests/client_004.phpt
+@@ -11,9 +11,9 @@ require_once 'testsuite_utilities.inc';
+ 
+ $redis = create_phpiredis_connection(REDIS_HOST, REDIS_PORT);
+ 
+-phpiredis_command($redis, 'DEL test');
+-phpiredis_command($redis, 'SET test 1');
+-$response = phpiredis_command($redis, 'GET test');
++phpiredis_command($redis, 'DEL ' . TESTKEY);
++phpiredis_command($redis, 'SET ' . TESTKEY . ' 1');
++$response = phpiredis_command($redis, 'GET ' . TESTKEY);
+ 
+ var_dump($response);
+ 
+diff --git a/phpiredis-1.0.0/tests/client_005.phpt b/phpiredis-1.0.0/tests/client_005.phpt
+index ddaacec..9e4ae8e 100644
+--- a/phpiredis-1.0.0/tests/client_005.phpt
++++ b/phpiredis-1.0.0/tests/client_005.phpt
+@@ -11,9 +11,9 @@ require_once 'testsuite_utilities.inc';
+ $redis = create_phpiredis_connection(REDIS_HOST, REDIS_PORT);
+ 
+ $commands = phpiredis_multi_command($redis, array(
+-    'DEL test',
+-    'SET test 1',
+-    'GET test'
++    'DEL ' . TESTKEY,
++    'SET ' . TESTKEY . ' 1',
++    'GET ' . TESTKEY
+ ));
+ 
+ var_dump($commands[2]);
+diff --git a/phpiredis-1.0.0/tests/client_006.phpt b/phpiredis-1.0.0/tests/client_006.phpt
+index 0720ab0..3e6a469 100644
+--- a/phpiredis-1.0.0/tests/client_006.phpt
++++ b/phpiredis-1.0.0/tests/client_006.phpt
+@@ -12,11 +12,11 @@ require_once 'testsuite_utilities.inc';
+ $redis = create_phpiredis_connection(REDIS_HOST, REDIS_PORT);
+ 
+ $commands = phpiredis_multi_command($redis, array(
+-    'DEL test',
+-    'LPUSH test 1',
+-    'LPUSH test 2',
+-    'LPUSH test 3',
+-    'LRANGE test 0 -1',
++    'DEL ' . TESTKEY,
++    'LPUSH ' . TESTKEY . ' 1',
++    'LPUSH ' . TESTKEY . ' 2',
++    'LPUSH ' . TESTKEY . ' 3',
++    'LRANGE ' . TESTKEY . ' 0 -1',
+ ));
+ 
+ var_dump($commands[4]);
+diff --git a/phpiredis-1.0.0/tests/client_007.phpt b/phpiredis-1.0.0/tests/client_007.phpt
+index 2899ffa..117fac1 100644
+--- a/phpiredis-1.0.0/tests/client_007.phpt
++++ b/phpiredis-1.0.0/tests/client_007.phpt
+@@ -11,9 +11,9 @@ require_once 'testsuite_utilities.inc';
+ 
+ $redis = create_phpiredis_connection(REDIS_HOST, REDIS_PORT);
+ 
+-phpiredis_command_bs($redis, array('DEL', 'test'));
+-phpiredis_command_bs($redis, array('SET', 'test', '1'));
+-$response = phpiredis_command_bs($redis, array('GET', 'test'));
++phpiredis_command_bs($redis, array('DEL', TESTKEY));
++phpiredis_command_bs($redis, array('SET', TESTKEY, '1'));
++$response = phpiredis_command_bs($redis, array('GET', TESTKEY));
+ 
+ var_dump($response);
+ 
+diff --git a/phpiredis-1.0.0/tests/client_008.phpt b/phpiredis-1.0.0/tests/client_008.phpt
+index e7f2565..f328097 100644
+--- a/phpiredis-1.0.0/tests/client_008.phpt
++++ b/phpiredis-1.0.0/tests/client_008.phpt
+@@ -19,9 +19,9 @@ $resource = fopen('/dev/urandom', 'r');
+ $data = fread($resource, 1024);
+ fclose($resource);
+ 
+-phpiredis_command_bs($redis, array('DEL', 'test'));
+-phpiredis_command_bs($redis, array('SET', 'test', $data));
+-$response = phpiredis_command_bs($redis, array('GET', 'test'));
++phpiredis_command_bs($redis, array('DEL', TESTKEY));
++phpiredis_command_bs($redis, array('SET', TESTKEY, $data));
++$response = phpiredis_command_bs($redis, array('GET', TESTKEY));
+ 
+ var_dump($response === $data);
+ 
+diff --git a/phpiredis-1.0.0/tests/client_009.phpt b/phpiredis-1.0.0/tests/client_009.phpt
+index ace14cb..d40c071 100644
+--- a/phpiredis-1.0.0/tests/client_009.phpt
++++ b/phpiredis-1.0.0/tests/client_009.phpt
+@@ -12,9 +12,9 @@ require_once 'testsuite_utilities.inc';
+ $redis = create_phpiredis_connection(REDIS_HOST, REDIS_PORT);
+ 
+ $commands = phpiredis_multi_command_bs($redis, array(
+-    array('DEL', 'test'),
+-    array('SET', 'test', '1'),
+-    array('GET', 'test')
++    array('DEL', TESTKEY),
++    array('SET', TESTKEY, '1'),
++    array('GET', TESTKEY)
+ ));
+ 
+ var_dump($commands[2]);
+diff --git a/phpiredis-1.0.0/tests/client_010.phpt b/phpiredis-1.0.0/tests/client_010.phpt
+index 5d68491..59b4f81 100644
+--- a/phpiredis-1.0.0/tests/client_010.phpt
++++ b/phpiredis-1.0.0/tests/client_010.phpt
+@@ -11,11 +11,11 @@ require_once 'testsuite_utilities.inc';
+ 
+ $redis = create_phpiredis_connection(REDIS_HOST, REDIS_PORT);
+ 
+-phpiredis_command($redis, 'SET a 1');
++phpiredis_command($redis, 'SET ' . TESTKEY . ' 1');
+ 
+-var_dump(phpiredis_command($redis, 'GET a'));
++var_dump(phpiredis_command($redis, 'GET ' . TESTKEY));
+ var_dump(phpiredis_command($redis, 'QUIT'));
+-var_dump(phpiredis_command($redis, 'GET a'));
++var_dump(phpiredis_command($redis, 'GET ' . TESTKEY));
+ 
+ --EXPECT--
+ string(1) "1"
+diff --git a/phpiredis-1.0.0/tests/client_011.phpt b/phpiredis-1.0.0/tests/client_011.phpt
+index 6dcf6c6..f1db791 100644
+--- a/phpiredis-1.0.0/tests/client_011.phpt
++++ b/phpiredis-1.0.0/tests/client_011.phpt
+@@ -11,11 +11,11 @@ require_once 'testsuite_utilities.inc';
+ 
+ $redis = create_phpiredis_connection(REDIS_HOST, REDIS_PORT);
+ 
+-phpiredis_command($redis, 'SET a 1');
++phpiredis_command($redis, 'SET ' . TESTKEY . ' 1');
+ var_dump(phpiredis_multi_command($redis, array(
+-	'GET a',
++	'GET ' . TESTKEY,
+ 	'QUIT',
+-	'GET a')
++	'GET ' . TESTKEY)
+ ));
+ 
+ --EXPECT--
+diff --git a/phpiredis-1.0.0/tests/testsuite_configuration.inc b/phpiredis-1.0.0/tests/testsuite_configuration.inc
+index 8d45c8f..8c9589b 100644
+--- a/phpiredis-1.0.0/tests/testsuite_configuration.inc
++++ b/phpiredis-1.0.0/tests/testsuite_configuration.inc
+@@ -3,3 +3,4 @@
+ define('REDIS_HOST', '127.0.0.1');
+ define('REDIS_PORT', 6379);
+ define('REDIS_UNIX_SOCKET', '/tmp/redis.sock');
++define('TESTKEY', '_phpiredistest_:test');

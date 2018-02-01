@@ -1,0 +1,17 @@
+commit 507b1e5256d5c52c35a17ea9861a5f54edfce52c
+Author: Alexander Hofbauer <a.hofbauer@justimmo.at>
+Date:   Fri Jul 31 12:21:52 2015 +0200
+
+    Use default redis socket path
+
+diff --git a/phpiredis-1.0.0/tests/testsuite_configuration.inc b/phpiredis-1.0.0/tests/testsuite_configuration.inc
+index 8c9589b..d8f2123 100644
+--- a/phpiredis-1.0.0/tests/testsuite_configuration.inc
++++ b/phpiredis-1.0.0/tests/testsuite_configuration.inc
+@@ -2,5 +2,5 @@
+ 
+ define('REDIS_HOST', '127.0.0.1');
+ define('REDIS_PORT', 6379);
+-define('REDIS_UNIX_SOCKET', '/tmp/redis.sock');
++define('REDIS_UNIX_SOCKET', '/run/redis/redis.sock');
+ define('TESTKEY', '_phpiredistest_:test');

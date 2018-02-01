@@ -1,0 +1,10 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+# don't require interaction in "make test"
+export NO_INTERACTION=1
+
+PECL_NAME_OVERRIDE=phpiredis
+include /usr/share/dh-php/pkg-pecl.mk

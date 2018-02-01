@@ -1,0 +1,3 @@
+[submodule "phpiredis-1.0.0"]
+	path = phpiredis-1.0.0
+	url = git@github.com:nrk/phpiredis.git

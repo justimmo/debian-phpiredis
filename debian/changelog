@@ -1,0 +1,29 @@
+phpiredis (1.0.0-2) stable; urgency=medium
+
+  * Rebuild for PHP 7.0 to 7.2
+
+ -- Alexander Hofbauer <alex@hofbauer.justimmo.at>  Thu, 01 Feb 2018 10:34:12 +0100
+
+phpiredis (1.0.0-0.1) stable; urgency=medium
+
+  * First stable release
+
+ -- Alexander Hofbauer <alex@hofbauer.justimmo.at>  Wed, 07 Dec 2016 14:54:54 +0100
+
+phpiredis (20161021-1) stable; urgency=medium
+
+  * Update to git #a64e3bfe.
+
+ -- Alexander Hofbauer <alex@hofbauer.justimmo.at>  Fri, 21 Oct 2016 10:36:24 +0200
+
+phpiredis (20151006-1) stable; urgency=medium
+
+  * Update to git #704c08c7.
+
+ -- Alexander Hofbauer <a.hofbauer@justimmo.at>  Tue, 06 Oct 2015 12:47:06 +0200
+
+phpiredis (20140905) stable; urgency=medium
+
+  * Initial release.
+
+ -- Alexander Hofbauer <a.hofbauer@justimmo.at>  Wed, 29 Jul 2015 14:52:08 +0200

@@ -5,8 +5,8 @@
  <summary>PHP7 Hiredis extension</summary>
  <description>Extension using libhiredis, providing native Redis connections</description>
  <version>
-  <release>1.0.0</release>
-  <api>1.0.0</api>
+  <release>1.0.1</release>
+  <api>1.0.1</api>
  </version>
  <stability>
   <release>stable</release>
@@ -15,8 +15,8 @@
  <dependencies>
   <required>
    <php>
-    <min>5.5.0</min>
-    <max>7.3.0</max>
+    <min>7.1.0</min>
+    <max>7.4.0</max>
    </php>
    <pearinstaller>
     <min>1.9.1</min>

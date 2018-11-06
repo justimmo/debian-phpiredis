@@ -4,10 +4,10 @@ Date:   Fri Jul 31 12:21:52 2015 +0200
 
     Use default redis socket path
 
-diff --git a/phpiredis-1.0.0/tests/testsuite_configuration.inc b/phpiredis-1.0.0/tests/testsuite_configuration.inc
+diff --git a/phpiredis-1.0.1/tests/testsuite_configuration.inc b/phpiredis-1.0.1/tests/testsuite_configuration.inc
 index 8c9589b..d8f2123 100644
---- a/phpiredis-1.0.0/tests/testsuite_configuration.inc
-+++ b/phpiredis-1.0.0/tests/testsuite_configuration.inc
+--- a/phpiredis-1.0.1/tests/testsuite_configuration.inc
++++ b/phpiredis-1.0.1/tests/testsuite_configuration.inc
 @@ -2,5 +2,5 @@
  
  define('REDIS_HOST', '127.0.0.1');

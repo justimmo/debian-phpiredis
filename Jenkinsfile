@@ -15,7 +15,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh label: 'test 7.2', script: 'make -C build-7.2 test'
-                sh label: 'test 7.3', script: 'make -C build-7.3 test'
+                sh label: 'test 7.4', script: 'make -C build-7.4 test'
             }
         }
     }

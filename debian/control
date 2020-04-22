@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Alexander Hofbauer <a.hofbauer@justimmo.at>
 Build-Depends: debhelper (>= 9~),
                dh-php (>= 0.22~),
-               php7.3-dev (>= 7.3~),
+               php7.4-dev (>= 7.4~),
                libhiredis-dev (>= 0.14~)
 Standards-Version: 3.9.8
 Homepage: https://github.com/nrk/phpiredis

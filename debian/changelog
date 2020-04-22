@@ -1,6 +1,6 @@
 phpiredis (1.0.1-1) stable; urgency=medium
 
-  * Rebuild for PHP 7.1 to 7.3.
+  * Rebuild for PHP 7.1 to 7.4.
   * Update for libhiredis 0.14.
 
  -- Alexander Hofbauer <alex@hofbauer.justimmo.at>  Tue, 06 Nov 2018 15:13:31 +0100
